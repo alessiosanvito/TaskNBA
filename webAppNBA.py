@@ -28,6 +28,7 @@ if user_api_key:
 
 with st.sidebar.expander(":link: Useful links"):
     st.write("**LLM implementation:** [LangChain documentation](https://python.langchain.com/docs/get_started/introduction.html)")
+    st.write("**LLM for graphs:** [PandasAI documentation](https://docs.pandas-ai.com/en/latest/)")
     st.write("**Dataset** [Kaggle NBA](https://www.kaggle.com/datasets/nathanlauga/nba-games/data)")
 
 #### FILE CSV
@@ -42,7 +43,7 @@ games['GAME_DATE_EST']= pd.to_datetime(games['GAME_DATE_EST'])
 os.environ['OPENAI_API_KEY'] = user_api_key
 
 selected_mode = st.selectbox("What do you want to do?", ["", "Ask your data",
-  'Ask to plot something'])
+  'Ask for some plot'])
 
 if selected_mode=='Ask your data':
     
@@ -94,7 +95,7 @@ if selected_mode=='Ask your data':
 
     st.button('Clear conversation', on_click=clear_chat, type='primary')
 
-if selected_mode=='Ask to plot something':
+if selected_mode=='Ask for some plot':
   from pandasai import SmartDataframe, SmartDatalake
   import pandas as pd
   # from pandasai.llm import OpenAI
