@@ -32,11 +32,6 @@ teams = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/teams.csv')
 games['GAME_DATE_EST']= pd.to_datetime(games['GAME_DATE_EST'])
 
 
-
-
-
-
-
 ##### AGENT
 
 agent = create_pandas_dataframe_agent(ChatOpenAI(temperature=0, model="gpt-4-1106-preview"), [games, games_details, players, ranking, teams], verbose=True)

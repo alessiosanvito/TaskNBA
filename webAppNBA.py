@@ -41,12 +41,6 @@ games['GAME_DATE_EST']= pd.to_datetime(games['GAME_DATE_EST'])
 
 os.environ['OPENAI_API_KEY'] = user_api_key
 
-# uploaded_file = st.sidebar.file_uploader("Please upload a csv file", type="csv")
-
-# model_file=st.sidebar.file_uploader('Please upload a pkl file', type='PKL')
-# with open(model_file, 'rb') as file:
-#   model = pickle.load(file)
-
 selected_mode = st.selectbox("What do you want to do?", ["", "Ask your data",
   'Ask to plot something'])
 
@@ -139,20 +133,6 @@ if selected_mode=='Ask to plot something':
   with st.expander('Preview of the selected DataFrame:'):
       st.table(df.head())
 
-  # games_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/games.csv')
-  # games_details_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/games_details.csv', low_memory=False)
-  # players_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/players.csv')
-  # ranking_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/ranking.csv')
-  # teams_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/teams.csv')
-
-  # GGDPmerge_df = pd.read_csv('C:/Users/Alessio/Desktop/TaskNBA/GGDPmerge.csv', low_memory=False)
-
-  # games = SmartDataframe(games_df, name="games")
-  # games_details = SmartDataframe(games_details_df, name="games_details")
-  # players = SmartDataframe(players_df, name="players")
-  # ranking = SmartDataframe(ranking_df, name="ranking")
-  # teams = SmartDataframe(teams_df, name="teams")
-
   mname = 'gpt-4-1106-preview'
   llm=ChatOpenAI(model_name=mname,
           temperature=0,
@@ -183,79 +163,8 @@ if selected_mode=='Ask to plot something':
     st.image(fig) #, caption='Plot of points scored by Pelicans', use_column_width=True)
   
   def clear_chat():
-    # st.session_state.chat_history=[]
+    
     st.session_state.user_input = ""
     os.remove('C:/Users/Alessio/Desktop/TaskNBA/temp_chart.png')
 
   st.button('Clear conversation', on_click=clear_chat, type='primary')
-
-
-
-
-    # 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
-    # Plot a chart of the arena capacity by team
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    # from sklearn.linear_model import LogisticRegression
-    # from sklearn.model_selection import train_test_split
-    # from sklearn.preprocessing import LabelEncoder
-    # import lime
-    # import lime.lime_tabular
-    # from sklearn.metrics import (
-    # precision_score,
-    # recall_score,
-    # f1_score)
-
-    # st.info("""Xplico performs automatically the label-encoder for
-    # the qualitative (str) features and the standard scaler for the
-    # numerical (int or float) ones""")
-
-    # target_feature=st.selectbox('Choose your target feature', df.columns)
-
-    # if target_feature:
-    #   st.subheader('Test size')
-    #   test_size=st.slider('Choose a %', min_value=0, max_value=100, value=33, step=1)
-    #   st.write('You chose', test_size/100)
-
-    #   if test_size:
-    #     continuous_features_iris = df.select_dtypes(include=['int',
-    #                                                           'float']).drop(target_feature, axis=1).columns.tolist()
-    #     target = df[target_feature]
-
-    #     datasetX = df.drop(target_feature, axis=1)
-    #     st.info("""Random state is set to 23""")
-    #     x_train, x_test, y_train, y_test = train_test_split(datasetX,
-    #                                                         target,
-    #                                                         test_size=test_size,
-    #                                                         random_state=23,
-    #                                                         stratify=target_feature)
-
-    #     categorical_features = x_train.columns.difference(continuous_features_iris)
-
-
-
-
-
-
-  #else:
-      #st.write("Please upload a CSV file.")
